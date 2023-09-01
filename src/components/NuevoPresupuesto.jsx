@@ -14,9 +14,6 @@ const NuevoPresupuesto = ({
 
         if(!presupuesto || presupuesto < 0) {
             setMensaje('No es un presupuesto válido')
-            setTimeout(() => {
-                setMensaje('')
-            }, 3000);
             return
         } 
         setMensaje('')
