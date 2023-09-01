@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
-
-
-
-
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
+import Modal from './components/Modal'
 
 function App() {
 
@@ -23,14 +20,17 @@ function App() {
 
   const [gastoEditar, setGastoEditar] = useState({})
 
-  const [filtro, setFiltro] = useState('')
-  const [gastosFiltrados, setGastosFiltrados] = useState([])
+  const handleNuevoGasto = () => {
+    setModal(true);
+    setTimeout(() => {
+      setAnimarModal(true)
+    }, 200);
+  }
+
 
   return (
     <div className={modal ? 'fijar' : '' }>
       <Header 
-          gastos={gastos}
-          setGastos={setGastos}
           presupuesto={presupuesto}
           setPresupuesto={setPresupuesto}
           isValidPresupuesto={isValidPresupuesto}
@@ -40,17 +40,7 @@ function App() {
       {isValidPresupuesto && (
         <>
           <main>
-            <Filtros 
-              filtro={filtro}
-              setFiltro={setFiltro}
-            />
-            <ListadoGastos 
-                gastos={gastos}
-                setGastoEditar={setGastoEditar}
-                eliminarGasto={eliminarGasto}
-                filtro={filtro}
-                gastosFiltrados={gastosFiltrados}
-            />
+            
           </main>
           <div className="nuevo-gasto">
               <img 
@@ -66,9 +56,6 @@ function App() {
                   setModal={setModal}
                   animarModal={animarModal}
                   setAnimarModal={setAnimarModal}
-                  guardarGasto={guardarGasto}
-                  gastoEditar={gastoEditar}
-                  setGastoEditar={setGastoEditar}
                 />}
 
     </div>
